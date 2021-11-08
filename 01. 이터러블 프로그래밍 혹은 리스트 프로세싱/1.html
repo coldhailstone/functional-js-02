@@ -63,6 +63,33 @@
             );
         }
         f4(10);
+        
+        console.clear();
+    </script>
+
+    8. 추억의 별 그리기, 구구단
+    <script>
+        const join = sep => _.reduce((a, b) => `${a}${sep}${b}`);
+
+        _.go(
+            L.range(1, 6),
+            L.map(L.range),
+            L.map(L.map(_ => '*')),
+            L.map(_.reduce((a, b) => `${a}${b}`)),
+            join('\n'),
+            console.log
+        );
+
+        _.go(
+            L.range(1, 6),
+            L.map(s => _.go(
+                L.range(s),
+                L.map(_ => '*'),
+                _.reduce((a, b) => `${a}${b}`)
+            )),
+            _.reduce((a, b) => `${a}\n${b}`),
+            console.log
+        );
     </script>
 </body>
 </html>
