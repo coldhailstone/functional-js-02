@@ -15,7 +15,7 @@
     5. 축약 및 합산을 reduce로
     <script>
         const { L, C } = window._;
-        
+
         // function f1(limit, list) {
         //     let acc = 0;
         //     for (const a of list) {
@@ -29,14 +29,15 @@
         // }
         function f1(limit, list) {
             let acc = 0;
-            for (const a of L.filter(a => a % 2, list)) {
-                const b = a * a;
-                acc += b;
+            for (const a of L.map(a => a * a, L.filter(a => a % 2, list))) {
+                acc += a;
                 if (--limit == 0) break;
             }
             console.log(acc);
         }
+        console.time('');
         f1(3, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+        console.timeEnd('');
     </script>
 </body>
 </html>
